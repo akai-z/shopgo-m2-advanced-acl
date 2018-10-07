@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 ShopGo. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Backend\Block\Cache\Additional" type="ShopGo\AdvancedAcl\Block\Cache\Additional"/>
+    <preference for="Magento\Config\Block\System\Config\Form" type="ShopGo\AdvancedAcl\Block\System\Config\Form"/>
+    <preference for="Magento\Backend\Model\Cache\ResourceModel\Grid\Collection" type="ShopGo\AdvancedAcl\Model\Cache\ResourceModel\Grid\Collection"/>
+    <preference for="Magento\Backend\Controller\Adminhtml\Cache\FlushSystem" type="ShopGo\AdvancedAcl\Controller\Adminhtml\Cache\FlushSystem"/>
+    <preference for="Magento\Backend\Controller\Adminhtml\Cache\FlushAll" type="ShopGo\AdvancedAcl\Controller\Adminhtml\Cache\FlushAll"/>
+    <preference for="Magento\Backend\Controller\Adminhtml\Cache\MassRefresh" type="ShopGo\AdvancedAcl\Controller\Adminhtml\Cache\MassRefresh"/>
+    <preference for="Magento\Backend\Controller\Adminhtml\Cache\MassEnable" type="ShopGo\AdvancedAcl\Controller\Adminhtml\Cache\MassEnable"/>
+    <preference for="Magento\Backend\Controller\Adminhtml\Cache\CleanMedia" type="ShopGo\AdvancedAcl\Controller\Adminhtml\Cache\CleanMedia"/>
+    <preference for="Magento\Backend\Controller\Adminhtml\Cache\CleanStaticFiles" type="ShopGo\AdvancedAcl\Controller\Adminhtml\Cache\CleanStaticFiles"/>
+    <preference for="Magento\Framework\AuthorizationInterface" type="ShopGo\AdvancedAcl\Model\Authorization"/>
+    <type name="Magento\Config\Model\Config\Structure\Element\Tab">
+        <plugin name="element_tab" type="ShopGo\AdvancedAcl\Model\Plugin\Config\Structure\Element\Tab" sortOrder="1" disabled="false"/>
+    </type>
+    <type name="Magento\Config\Model\Config\Structure\Element\Section">
+        <plugin name="element_section" type="ShopGo\AdvancedAcl\Model\Plugin\Config\Structure\Element\Section" sortOrder="1" disabled="false"/>
+    </type>
+    <type name="Magento\Backend\Model\Menu\Item">
+        <plugin name="menu_item" type="ShopGo\AdvancedAcl\Model\Plugin\Menu\Item" sortOrder="1" disabled="false"/>
+    </type>
+    <virtualType name="ShopGo\AdvancedAcl\Model\System\Config\SchemaLocator" type="ShopGo\AdvancedAcl\Model\Config\SchemaLocator">
+        <arguments>
+            <argument name="fileName" xsi:type="string">system_config.xsd</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ShopGo\AdvancedAcl\Model\System\Config\Reader" type="ShopGo\AdvancedAcl\Model\Config\Reader">
+        <arguments>
+            <argument name="schemaLocator" xsi:type="object">ShopGo\AdvancedAcl\Model\System\Config\SchemaLocator</argument>
+            <argument name="fileName" xsi:type="string">system_config.xml</argument>
+        </arguments>
+    </virtualType>
+    <type name="ShopGo\AdvancedAcl\Model\System\Config">
+        <arguments>
+            <argument name="configReader" xsi:type="object">ShopGo\AdvancedAcl\Model\System\Config\Reader</argument>
+        </arguments>
+    </type>
+    <virtualType name="ShopGo\AdvancedAcl\Model\Cache\Config\SchemaLocator" type="ShopGo\AdvancedAcl\Model\Config\SchemaLocator">
+        <arguments>
+            <argument name="fileName" xsi:type="string">cache.xsd</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ShopGo\AdvancedAcl\Model\Cache\Config\Reader" type="ShopGo\AdvancedAcl\Model\Config\Reader">
+        <arguments>
+            <argument name="schemaLocator" xsi:type="object">ShopGo\AdvancedAcl\Model\Cache\Config\SchemaLocator</argument>
+            <argument name="fileName" xsi:type="string">cache.xml</argument>
+        </arguments>
+    </virtualType>
+    <type name="ShopGo\AdvancedAcl\Model\Cache\Config">
+        <arguments>
+            <argument name="configReader" xsi:type="object">ShopGo\AdvancedAcl\Model\Cache\Config\Reader</argument>
+        </arguments>
+    </type>
+    <virtualType name="ShopGo\AdvancedAcl\Model\Menu\Config\SchemaLocator" type="ShopGo\AdvancedAcl\Model\Config\SchemaLocator">
+        <arguments>
+            <argument name="fileName" xsi:type="string">menu.xsd</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ShopGo\AdvancedAcl\Model\Menu\Config\Reader" type="ShopGo\AdvancedAcl\Model\Config\Reader">
+        <arguments>
+            <argument name="schemaLocator" xsi:type="object">ShopGo\AdvancedAcl\Model\Menu\Config\SchemaLocator</argument>
+            <argument name="fileName" xsi:type="string">menu.xml</argument>
+        </arguments>
+    </virtualType>
+    <type name="ShopGo\AdvancedAcl\Model\Menu\Config">
+        <arguments>
+            <argument name="configReader" xsi:type="object">ShopGo\AdvancedAcl\Model\Menu\Config\Reader</argument>
+        </arguments>
+    </type>
+    <virtualType name="ShopGo\AdvancedAcl\Model\Authorization\Resource\Config\SchemaLocator" type="ShopGo\AdvancedAcl\Model\Config\SchemaLocator">
+        <arguments>
+            <argument name="fileName" xsi:type="string">authorization_resource.xsd</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ShopGo\AdvancedAcl\Model\Authorization\Resource\Config\Reader" type="ShopGo\AdvancedAcl\Model\Config\Reader">
+        <arguments>
+            <argument name="schemaLocator" xsi:type="object">ShopGo\AdvancedAcl\Model\Authorization\Resource\Config\SchemaLocator</argument>
+            <argument name="fileName" xsi:type="string">authorization_resource.xml</argument>
+        </arguments>
+    </virtualType>
+    <type name="ShopGo\AdvancedAcl\Model\Authorization\Resource\Config">
+        <arguments>
+            <argument name="configReader" xsi:type="object">ShopGo\AdvancedAcl\Model\Authorization\Resource\Config\Reader</argument>
+        </arguments>
+    </type>
+</config>
