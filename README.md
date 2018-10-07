@@ -17,8 +17,9 @@ A module that extends Magento's ACL and adds more features to it.
 
 ## <a name="over"></a>Overview
 
-Advanced ACL extends some ACL features such as system configuration access, by allowing users to specify config fields and groups that they would like to show.
-The module allows users to specify admin panel menu items that they would like to show or hide.
+Advanced ACL extends some ACL features such as system configuration access,  
+by allowing users to specify config fields and groups that they would like to show.  
+The module allows users to specify admin panel menu items that they would like to show or hide.  
 It also allows users to disable access to some cache types and additional cache page actions.
 
 ## <a name="install"></a>Installation
